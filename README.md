@@ -1,6 +1,6 @@
 # PSL Thesis Template
 
-This folder is a shareable PSL thesis template extracted from a working manuscript and cleaned for reuse. It keeps the PSL cover integration, a manuscript-style chapter structure, standalone chapter builds, and a bibliography workflow designed to work well with `biblatex`, `biber`, Zotero, and Better BibTeX.
+This folder is a shareable PSL thesis template. It keeps the PSL cover integration, a manuscript-style chapter structure, standalone chapter builds, and a bibliography workflow designed to work well with `biblatex`, `biber`, Zotero, and Better BibTeX.
 
 ## What this template gives you
 
