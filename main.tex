@@ -1,0 +1,27 @@
+\documentclass[a4paper,12pt,twoside]{book}
+%!TEX program = xelatex
+
+\input{config/preamble.tex}
+\input{config/cover-metadata.tex}
+\pslcover
+
+\begin{document}
+
+\frontmatter
+\input{frontmatter/dedication.tex}
+\input{frontmatter/acknowledgements.tex}
+\input{frontmatter/table-of-contents.tex}
+\input{frontmatter/resume.tex}
+\input{frontmatter/introduction.tex}
+\input{frontmatter/list-of-acronyms.tex}
+
+\mainmatter
+\input{ch1/ch1.tex}
+\input{ch2/ch2.tex}
+\input{ch3/ch3.tex}
+\input{ch4/ch4.tex}
+
+\backmatter
+\input{backmatter/conclusion.tex}
+
+\end{document}

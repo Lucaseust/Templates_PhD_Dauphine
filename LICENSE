@@ -1,0 +1,21 @@
+GNU General Public License v3.0 or later (GPL-3.0-or-later)
+
+Copyright (C) 2026 contributors to this repository
+
+This repository includes modified GPL-licensed material from Pierre
+Guillou's PSL thesis cover package, including `psl-cover.sty` and related
+cover assets. To preserve license compatibility, this repository is made
+available under the terms of the GNU General Public License as published
+by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This repository is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+For attribution details, see:
+- `ATTRIBUTION.md`
+- `psl-cover.sty`
+
+For the canonical GNU GPL v3 license text, see:
+https://www.gnu.org/licenses/gpl-3.0.txt
