@@ -1,67 +1,136 @@
 # PSL Thesis Template
 
-This folder is a shareable PSL thesis template. It keeps the PSL cover integration, a manuscript-style chapter structure, standalone chapter builds, and a bibliography workflow designed to work well with `biblatex`, `biber`, Zotero, and Better BibTeX.
+A reusable and shareable PSL thesis template for LaTeX. It includes PSL cover support, a chapter-based writing structure, standalone chapter entry points, and a bibliography workflow that fits well with `biblatex`, `biber`, Zotero, and Better BibTeX.
 
-## What this template gives you
+This template is primarily designed for a local Windows workflow in VS Code, VSCodium, or Cursor. It can also be used on macOS and Overleaf. The repository does not rely on downloaded executable helper scripts.
 
-- a full thesis entry point in `main.tex`
+## Preview
+
+These screenshots come from the current sample render included in the repository.
+
+| Manuscript cover | Standalone chapter |
+| --- | --- |
+| ![Rendered manuscript cover](assets/preview/manuscript-cover.png) | ![Rendered standalone chapter preview](assets/preview/chapter-preview.png) |
+
+## Why this template exists
+
+This repository is meant for people who want to start from a practical thesis skeleton instead of assembling one from scratch. It already includes:
+
+- a full manuscript entry point in `main.tex`
 - standalone chapter entry points in `chapter-ch1.tex` to `chapter-ch4.tex`
-- chapter folders that mirror a real manuscript workflow: one root chapter file plus section files
-- boxed chapter-overview blocks at the beginning of each chapter
-- chapter-level reference sections through `refsection`
-- PSL cover support through `psl-cover.sty`
-- PowerShell build scripts with stable output paths under `build/`
+- a chapter-per-folder structure with separate section files
+- chapter-level bibliographies through `refsection`
+- PSL cover integration through `psl-cover.sty`
+- a workflow based on direct editor builds or `latexmk` commands
 
-## Requirements
+## Local workflow
 
-- a LaTeX distribution with `xelatex` and `biber`
-- PowerShell for the provided build scripts
+The intended workflow is local editing in VS Code, VSCodium, or Cursor with a LaTeX extension such as LaTeX Workshop.
 
-The recommended engine is `xelatex`. The template is configured for `biblatex` with `biber`, not for legacy BibTeX workflows.
+This repository is Windows-first:
 
-## Repository structure
+- the examples below use a Windows terminal
+- the local setup assumes a Windows machine with a local TeX distribution
+- no executable script from the repository is required
 
-- `main.tex`: full manuscript entry point
-- `chapter-ch1.tex` to `chapter-ch4.tex`: standalone chapter entry points
-- `config/`: shared configuration
-  - `preamble.tex`: packages, bibliography, numbering, layout helpers
-  - `cover-metadata.tex`: title, author, jury, abstract, keywords
-  - `chapter-standalone.tex`: wrapper used by standalone chapter entry points
-- `frontmatter/`: dedication, acknowledgements, TOC, resume, introduction, acronyms
-- `ch1/` to `ch4/`: chapter root files and section files
-- `backmatter/`: conclusion
-- `bibliography/`: bibliography database
-- `assets/cover/`: cover images and institute logo
-- `scripts/`: build helpers
-- `build/`: generated PDFs and LaTeX cache
+That workflow is the best fit if you want:
+
+- version control with Git
+- Zotero or Better BibTeX integration
+- builds through VS Code or direct `latexmk` commands
+- easier file-by-file editing across chapters and front matter
 
 ## Quick start
 
-1. Update [`config/cover-metadata.tex`](config/cover-metadata.tex) with your title, name, jury, abstracts, and keywords.
-2. Replace the placeholder frontmatter files under [`frontmatter/`](frontmatter/).
-3. Replace the placeholder chapter text under [`ch1/`](ch1/), [`ch2/`](ch2/), [`ch3/`](ch3/), and [`ch4/`](ch4/).
-4. Connect or replace [`bibliography/references.bib`](bibliography/references.bib).
-5. Build the manuscript.
+1. Get a copy of the repository.
+2. Install a LaTeX distribution with `latexmk`, `xelatex`, and `biber`.
+3. Update [`config/cover-metadata.tex`](config/cover-metadata.tex).
+4. Replace the placeholder text in [`frontmatter/`](frontmatter/) and [`ch1/`](ch1/) to [`ch4/`](ch4/).
+5. Replace or connect [`bibliography/references.bib`](bibliography/references.bib).
+6. Check your setup in a Windows terminal:
+
+```text
+where latexmk
+where xelatex
+where biber
+```
+
+7. Build the manuscript:
+
+```text
+latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -outdir=build main.tex
+```
+
+## Overleaf workflow
+
+This template can also be used on Overleaf.
+
+The simplest path is:
+
+1. Create a blank Overleaf project.
+2. Upload all source files and folders except `build/` and `.git/`.
+3. Set `main.tex` as the main document.
+4. Select `XeLaTeX` as the compiler in the Overleaf menu.
+5. Recompile the project.
+
+If you want to compile one chapter as a standalone document on Overleaf, change the main document from `main.tex` to `chapter-ch1.tex`, `chapter-ch2.tex`, and so on.
+
+## macOS adaptation
+
+The LaTeX sources themselves are portable.
+
+On macOS, use the repository with:
+
+- VS Code, VSCodium, or another editor
+- MacTeX or another TeX distribution that provides `latexmk`, `xelatex`, and `biber`
+- direct terminal commands instead of repository helper scripts
+
+Typical macOS commands:
+
+```text
+which latexmk
+which xelatex
+which biber
+latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -outdir=build main.tex
+latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -outdir=build chapter-ch2.tex
+```
+
+## How to get this template
+
+Once this repository is on GitHub, people can use it in three common ways:
+
+- Click `Use this template` to create a new repository from it.
+- Click `Code` then `Download ZIP` for a one-time local copy.
+- Clone it with Git:
+
+```text
+git clone https://github.com/YOUR-ACCOUNT/YOUR-REPO.git
+```
+
+If someone downloads the ZIP version, they can still initialize Git later in the extracted folder.
 
 ## Build commands
 
-Full manuscript:
+Use VS Code or run `latexmk` directly.
 
-```powershell
-.\scripts\build-manuscript.ps1
+Check your setup on Windows:
+
+```text
+where latexmk
+where xelatex
+where biber
 ```
 
-All standalone chapters:
+Build the full manuscript:
 
-```powershell
-.\scripts\build-chapters.ps1
+```text
+latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -outdir=build main.tex
 ```
 
-One specific entry point:
+Build a standalone chapter:
 
-```powershell
-.\scripts\build-latex.ps1 -Entry .\main.tex -Engine xelatex
-.\scripts\build-latex.ps1 -Entry .\chapter-ch2.tex -Engine xelatex
+```text
+latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -outdir=build chapter-ch2.tex
 ```
 
 Canonical outputs:
@@ -72,90 +141,60 @@ Canonical outputs:
 - `build/chapter-ch3.pdf`
 - `build/chapter-ch4.pdf`
 
-## Chapter logic
+Generated files under `build/` are ignored by Git by default.
 
-Each chapter is intentionally split in two layers.
+## Repository layout
 
-- The root chapter file such as [`ch1/ch1.tex`](ch1/ch1.tex) contains:
-  - `\chapter{...}`
-  - `\chaptermark{...}`
-  - a boxed `\objectif{...}` overview that can act as a chapter abstract or reader roadmap
-  - the `refsection` block and the chapter-level bibliography
-- The section files such as [`ch1/ch1_1.tex`](ch1/ch1_1.tex) contain the actual body text.
+Quick folder view:
 
-This is close to the structure of the original manuscript and makes it easier to:
-
-- circulate one chapter as a standalone PDF
-- keep chapter-level references isolated
-- revise long chapters without turning one file into a monolith
-
-Because each chapter is wrapped in its own `refsection`, a standalone chapter PDF only prints the references cited inside that chapter.
-
-## Bibliography workflow
-
-This template uses `biblatex` with `biber`. That is the recommended setup for a modern thesis workflow, especially if you work from Zotero.
-
-### Recommended Zotero workflow
-
-The smoothest setup is:
-
-1. Keep your bibliography in Zotero.
-2. Install Better BibTeX in Zotero.
-3. Auto-export a collection or your thesis library to [`bibliography/references.bib`](bibliography/references.bib).
-4. Keep that export updated automatically.
-5. Cite only through stable citation keys in LaTeX.
-
-### Good practices with Better BibTeX
-
-- Choose a stable citation-key pattern early and keep it fixed for the project.
-- Avoid renaming citation keys once the manuscript is under active writing, unless you are ready to update all citations.
-- Treat `bibliography/references.bib` as a generated file if it comes from Zotero auto-export.
-- Do not manually clean, reorder, or "improve" an auto-exported `.bib` by hand; make the correction in Zotero instead.
-- If a reference is wrong, fix the Zotero item, not the generated `.bib`.
-- If you use Zotero collections, export only the collection relevant to the thesis rather than your whole library.
-
-### Good practices in LaTeX
-
-- Use `\textcite{key}` when the author belongs to the sentence.
-- Use `\parencite{key}` when the citation belongs in parentheses.
-- Use one citation key style consistently across the thesis.
-- Build with `biber`, not `bibtex`.
-
-### If you need local manual entries
-
-If you want a few entries that should not live in Zotero, the clean approach is to add a second local bibliography file rather than editing the Zotero export.
-
-Example:
-
-```tex
-\addbibresource{bibliography/references.bib}
-\addbibresource{bibliography/local.bib}
+```text
+psl-thesis-template/
+|-- main.tex
+|-- chapter-ch1.tex
+|-- chapter-ch2.tex
+|-- chapter-ch3.tex
+|-- chapter-ch4.tex
+|-- README.md
+|-- GUIDE.md
+|-- LICENSE
+|-- ATTRIBUTION.md
+|-- config/
+|-- frontmatter/
+|-- ch1/
+|-- ch2/
+|-- ch3/
+|-- ch4/
+|-- backmatter/
+|-- bibliography/
+|-- assets/
+|   `-- cover/
+`-- build/
 ```
 
-If you do this, keep `references.bib` generated and keep `local.bib` hand-maintained.
+- `main.tex`: full manuscript entry point
+- `chapter-ch1.tex` to `chapter-ch4.tex`: standalone chapter entry points
+- `config/`: shared preamble, cover metadata, and standalone wrappers
+- `frontmatter/`: dedication, acknowledgements, TOC, resume, introduction, acronyms
+- `ch1/` to `ch4/`: chapter root files and section files
+- `backmatter/`: conclusion
+- `bibliography/`: bibliography database files
+- `assets/cover/`: cover images and institute logo
+- `build/`: generated PDFs and LaTeX cache
 
-## Writing and repository practices
+The recommended local toolchain expects `latexmk`, `biber`, and a LaTeX engine such as `xelatex`.
 
-- Keep chapter root files thin. They should manage chapter structure, not hold all the prose.
-- Put substantial content in section files.
-- Keep file names simple and predictable.
-- Avoid spaces in `.tex`, image, and bibliography file names.
-- Keep generated artifacts under `build/`, not mixed with source files.
-- Commit source files first; generated PDFs are optional and should not drive the workflow.
-- Keep cover assets under `assets/cover/` so the package works with relative paths.
-- If you change bibliography structure, update [`config/preamble.tex`](config/preamble.tex) explicitly rather than scattering `\addbibresource` calls through the manuscript.
+## Documentation
+
+- Full usage guide: [`GUIDE.md`](GUIDE.md)
+- Attribution notes: [`ATTRIBUTION.md`](ATTRIBUTION.md)
+- License notice: [`LICENSE`](LICENSE)
 
 ## Attribution and publishing
 
-This template includes a modified copy of Pierre Guillou's PSL thesis cover package.
+This template includes a modified copy of Pierre Guillou's PSL thesis cover package. The original copyright and licensing notice remains in [`psl-cover.sty`](psl-cover.sty).
 
-- official project page: <https://pierre.guillou.net/psl-cover/2018/>
-- attribution notes: [`ATTRIBUTION.md`](ATTRIBUTION.md)
-
-The original copyright notice is preserved in [`psl-cover.sty`](psl-cover.sty).
-
-If you publish this template as a GitHub repository, good practice is to:
+If you republish or adapt this repository:
 
 - keep the attribution intact
-- add a proper `LICENSE` file compatible with the included cover package
-- describe clearly what is original to this template and what comes from the upstream PSL cover project
+- keep the license information visible
+- make clear which parts come from the upstream PSL cover project and which parts are specific to this template
