@@ -1,117 +1,96 @@
-# PSL Thesis Template
+# Templates_PhD_Dauphine
 
-A reusable and shareable PSL thesis template for LaTeX. It includes PSL cover support, a chapter-based writing structure, standalone chapter entry points, and a bibliography workflow that fits well with `biblatex`, `biber`, Zotero, and Better BibTeX.
+Collection of LaTeX templates for Université Paris Dauphine - PSL. The repository now contains three separate template families:
 
-This template is primarily designed for a local Windows workflow in VS Code, VSCodium, or Cursor. It can also be used on macOS and Overleaf. The repository does not rely on downloaded executable helper scripts.
+- a full PhD manuscript template
+- a poster template
+- a presentation template
 
-## Preview
+The intended workflow is local editing in VS Code, VSCodium, or Cursor with a LaTeX extension such as LaTeX Workshop. The examples below assume a Windows machine, but the LaTeX sources remain portable to macOS and Overleaf.
 
-These screenshots come from the current sample render included in the repository.
+## Repository overview
+
+```text
+Templates_PhD_Dauphine/
+|-- README.md
+|-- GUIDE.md
+|-- Template manuscrit thèse/
+|   |-- ATTRIBUTION.md
+|   |-- LICENSE
+|   |-- main.tex
+|   |-- chapter-ch1.tex
+|   |-- chapter-ch2.tex
+|   |-- chapter-ch3.tex
+|   |-- chapter-ch4.tex
+|   |-- psl-cover.sty
+|   |-- assets/
+|   |   |-- cover/
+|   |   `-- preview/
+|   |-- backmatter/
+|   |-- bibliography/
+|   |-- ch1/
+|   |-- ch2/
+|   |-- ch3/
+|   |-- ch4/
+|   |-- config/
+|   `-- frontmatter/
+|-- Template poster Dauphine/
+|   `-- Poster Template.tex
+`-- Template présentation Dauphine/
+    `-- Template Dauphine-PSL.tex
+```
+
+## Included templates
+
+### 1. Thesis manuscript
+
+The manuscript template is the most complete part of the repository. It includes:
+
+- a full manuscript entry point in `Template manuscrit thèse/main.tex`
+- standalone chapter entry points in `Template manuscrit thèse/chapter-ch1.tex` to `Template manuscrit thèse/chapter-ch4.tex`
+- one folder per chapter with separate section files
+- chapter-level bibliographies through `refsection`
+- PSL cover integration through `Template manuscrit thèse/psl-cover.sty`
+- front matter, back matter, bibliography, and cover metadata files
+
+Preview images from the manuscript template:
 
 | Manuscript cover | Standalone chapter |
 | --- | --- |
-| ![Rendered manuscript cover](assets/preview/manuscript-cover.png) | ![Rendered standalone chapter preview](assets/preview/chapter-preview.png) |
+| ![Rendered manuscript cover](Template manuscrit thèse/assets/preview/manuscript-cover.png) | ![Rendered standalone chapter preview](Template manuscrit thèse/assets/preview/chapter-preview.png) |
 
-## Why this template exists
+Main folders inside `Template manuscrit thèse/`:
 
-This repository is meant for people who want to start from a practical thesis skeleton instead of assembling one from scratch. It already includes:
+- `config/`: shared preamble, cover metadata, and standalone chapter wrapper
+- `frontmatter/`: dedication, acknowledgements, table of contents, resume, introduction, list of acronyms
+- `ch1/` to `ch4/`: chapter root files and section files
+- `backmatter/`: conclusion
+- `bibliography/`: bibliography database files
+- `assets/cover/`: cover assets
+- `assets/preview/`: sample render previews
 
-- a full manuscript entry point in `main.tex`
-- standalone chapter entry points in `chapter-ch1.tex` to `chapter-ch4.tex`
-- a chapter-per-folder structure with separate section files
-- chapter-level bibliographies through `refsection`
-- PSL cover integration through `psl-cover.sty`
-- a workflow based on direct editor builds or `latexmk` commands
+### 2. Poster
 
-## Local workflow
+`Template poster Dauphine/` contains a poster source file and the visual assets it references. This template is meant for one-file editing, with the required images stored next to the `.tex` source.
 
-The intended workflow is local editing in VS Code, VSCodium, or Cursor with a LaTeX extension such as LaTeX Workshop.
+Main entry point:
 
-This repository is Windows-first:
+- `Template poster Dauphine/Poster Template.tex`
 
-- the examples below use a Windows terminal
-- the local setup assumes a Windows machine with a local TeX distribution
-- no executable script from the repository is required
+### 3. Presentation
 
-That workflow is the best fit if you want:
+`Template présentation Dauphine/` contains a Beamer presentation template styled for Dauphine-PSL, with the logo assets required by the title page and footer.
 
-- version control with Git
-- Zotero or Better BibTeX integration
-- builds through VS Code or direct `latexmk` commands
-- easier file-by-file editing across chapters and front matter
+Main entry point:
+
+- `Template présentation Dauphine/Template Dauphine-PSL.tex`
 
 ## Quick start
 
-1. Get a copy of the repository.
-2. Install a LaTeX distribution with `latexmk`, `xelatex`, and `biber`.
-3. Update [`config/cover-metadata.tex`](config/cover-metadata.tex).
-4. Replace the placeholder text in [`frontmatter/`](frontmatter/) and [`ch1/`](ch1/) to [`ch4/`](ch4/).
-5. Replace or connect [`bibliography/references.bib`](bibliography/references.bib).
-6. Check your setup in a Windows terminal:
-
-```text
-where latexmk
-where xelatex
-where biber
-```
-
-7. Build the manuscript:
-
-```text
-latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -outdir=build main.tex
-```
-
-## Overleaf workflow
-
-This template can also be used on Overleaf.
-
-The simplest path is:
-
-1. Create a blank Overleaf project.
-2. Upload all source files and folders except `build/` and `.git/`.
-3. Set `main.tex` as the main document.
-4. Select `XeLaTeX` as the compiler in the Overleaf menu.
-5. Recompile the project.
-
-If you want to compile one chapter as a standalone document on Overleaf, change the main document from `main.tex` to `chapter-ch1.tex`, `chapter-ch2.tex`, and so on.
-
-## macOS adaptation
-
-The LaTeX sources themselves are portable.
-
-On macOS, use the repository with:
-
-- VS Code, VSCodium, or another editor
-- MacTeX or another TeX distribution that provides `latexmk`, `xelatex`, and `biber`
-- direct terminal commands instead of repository helper scripts
-
-Typical macOS commands:
-
-```text
-which latexmk
-which xelatex
-which biber
-latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -outdir=build main.tex
-latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -outdir=build chapter-ch2.tex
-```
-
-## How to get this template
-
-Once this repository is on GitHub, people can use it in three common ways:
-
-- Click `Use this template` to create a new repository from it.
-- Click `Code` then `Download ZIP` for a one-time local copy.
-- Clone it with Git:
-
-```text
-git clone https://github.com/YOUR-ACCOUNT/YOUR-REPO.git
-```
-
-If someone downloads the ZIP version, they can still initialize Git later in the extracted folder.
-
-## Build commands
-
-Use VS Code or run `latexmk` directly.
+1. Clone or download the repository.
+2. Install a LaTeX distribution that provides `latexmk`, `xelatex`, and `biber`.
+3. Choose the template you want to work on.
+4. Open the corresponding folder in your editor or build from that folder in a terminal.
 
 Check your setup on Windows:
 
@@ -120,6 +99,12 @@ where latexmk
 where xelatex
 where biber
 ```
+
+## Build commands
+
+### Thesis manuscript
+
+Run the following commands from `Template manuscrit thèse/`.
 
 Build the full manuscript:
 
@@ -133,7 +118,7 @@ Build a standalone chapter:
 latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -outdir=build chapter-ch2.tex
 ```
 
-Canonical outputs:
+Typical outputs:
 
 - `build/main.pdf`
 - `build/chapter-ch1.pdf`
@@ -141,60 +126,59 @@ Canonical outputs:
 - `build/chapter-ch3.pdf`
 - `build/chapter-ch4.pdf`
 
-Generated files under `build/` are ignored by Git by default.
+### Poster
 
-## Repository layout
-
-Quick folder view:
+Run the build from `Template poster Dauphine/` with your usual LaTeX command for the poster source file:
 
 ```text
-psl-thesis-template/
-|-- main.tex
-|-- chapter-ch1.tex
-|-- chapter-ch2.tex
-|-- chapter-ch3.tex
-|-- chapter-ch4.tex
-|-- README.md
-|-- GUIDE.md
-|-- LICENSE
-|-- ATTRIBUTION.md
-|-- config/
-|-- frontmatter/
-|-- ch1/
-|-- ch2/
-|-- ch3/
-|-- ch4/
-|-- backmatter/
-|-- bibliography/
-|-- assets/
-|   `-- cover/
-`-- build/
+latexmk -pdf -interaction=nonstopmode -file-line-error "Poster Template.tex"
 ```
 
-- `main.tex`: full manuscript entry point
-- `chapter-ch1.tex` to `chapter-ch4.tex`: standalone chapter entry points
-- `config/`: shared preamble, cover metadata, and standalone wrappers
-- `frontmatter/`: dedication, acknowledgements, TOC, resume, introduction, acronyms
-- `ch1/` to `ch4/`: chapter root files and section files
-- `backmatter/`: conclusion
-- `bibliography/`: bibliography database files
-- `assets/cover/`: cover images and institute logo
-- `build/`: generated PDFs and LaTeX cache
+### Presentation
 
-The recommended local toolchain expects `latexmk`, `biber`, and a LaTeX engine such as `xelatex`.
+Run the build from `Template présentation Dauphine/`:
+
+```text
+latexmk -pdf -interaction=nonstopmode -file-line-error "Template Dauphine-PSL.tex"
+```
+
+## Editing priorities for the manuscript template
+
+If you are starting from the thesis manuscript template, update these files first:
+
+1. `Template manuscrit thèse/config/cover-metadata.tex`
+2. `Template manuscrit thèse/frontmatter/`
+3. `Template manuscrit thèse/ch1/` to `Template manuscrit thèse/ch4/`
+4. `Template manuscrit thèse/bibliography/references.bib`
+
+## Overleaf workflow
+
+The templates can also be used on Overleaf.
+
+Recommended approach:
+
+1. Create a blank Overleaf project.
+2. Upload the folder corresponding to the template you want to use.
+3. Set the right main document.
+4. Select the appropriate compiler.
+
+Suggested main documents:
+
+- thesis: `main.tex`
+- poster: `Poster Template.tex`
+- presentation: `Template Dauphine-PSL.tex`
+
+For the manuscript template, keep the internal folder structure unchanged when uploading to Overleaf.
 
 ## Documentation
 
-- Full usage guide: [`GUIDE.md`](GUIDE.md)
-- Attribution notes: [`ATTRIBUTION.md`](ATTRIBUTION.md)
-- License notice: [`LICENSE`](LICENSE)
+`GUIDE.md` still documents the manuscript workflow in more detail.
 
-## Attribution and publishing
+Within the manuscript template itself:
 
-This template includes a modified copy of Pierre Guillou's PSL thesis cover package. The original copyright and licensing notice remains in [`psl-cover.sty`](psl-cover.sty).
+- `Template manuscrit thèse/ATTRIBUTION.md`
+- `Template manuscrit thèse/LICENSE`
 
-If you republish or adapt this repository:
+## Attribution
 
-- keep the attribution intact
-- keep the license information visible
-- make clear which parts come from the upstream PSL cover project and which parts are specific to this template
+The manuscript template includes a modified copy of Pierre Guillou's PSL thesis cover package. The original copyright and licensing notice remain in `Template manuscrit thèse/psl-cover.sty`.

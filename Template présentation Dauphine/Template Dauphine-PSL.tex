@@ -1,0 +1,329 @@
+\documentclass[aspectratio=169]{beamer} % Ratio 16:9 commun pour les projecteurs modernes
+
+% --- PAQUETS UTILISÉS ---
+\usepackage[utf8]{inputenc} % Encodage des caractères
+\usepackage[T1]{fontenc}    % Encodage de la police
+\usepackage[french]{babel}  % Support de la langue française
+\usepackage{graphicx}       % Pour inclure des images
+\usepackage{helvet}         % Police Helvetica (remplace Lato qui n'est pas toujours disponible)
+\usepackage{amsmath}        % Pour les équations mathématiques
+\usepackage{booktabs}       % Pour de jolis tableaux
+\usepackage{tikz}           % Pour dessiner (utilisé pour le logo dans le pied de page)
+\usepackage{csquotes}       % Recommandé avec biblatex
+% \usepackage[backend=biber, style=authoryear]{biblatex} % Pour la bibliographie (décommentez si besoin)
+% \addbibresource{bibliographie.bib} % Fichier de bibliographie (décommentez si besoin)
+
+% --- DÉFINITION DES COULEURS DAUPHINE ---
+% Source: Charte Graphique p.13
+\definecolor{DauphineBlue}{RGB}{47, 68, 134}  % Pantone 7687C (#2f4486)
+\definecolor{DauphineGrey}{RGB}{67, 65, 72}   % Cool Gray 11C (#434148) - Pour le texte principal
+\definecolor{DauphineLightBlue}{RGB}{92, 237, 255} % Pantone 319C (#5cedff) - Couleur complémentaire (peu utilisée ici pour garder un style épuré)
+
+% --- CONFIGURATION DU THÈME BEAMER ---
+
+% Couleurs Beamer
+\setbeamercolor{palette primary}{bg=DauphineBlue, fg=white}
+\setbeamercolor{palette secondary}{bg=DauphineBlue, fg=white}
+\setbeamercolor{palette tertiary}{bg=DauphineBlue, fg=white}
+\setbeamercolor{palette quaternary}{bg=DauphineBlue, fg=white}
+
+\setbeamercolor{structure}{fg=DauphineBlue} % Couleur principale pour titres, etc.
+\setbeamercolor{titlelike}{parent=structure}
+\setbeamercolor{frametitle}{bg=white, fg=DauphineBlue} % Fond blanc, texte bleu pour le titre de la diapositive
+\setbeamercolor{normal text}{fg=DauphineGrey} % Texte principal en gris foncé
+\setbeamercolor{alerted text}{fg=DauphineBlue} % Texte alerté en bleu Dauphine
+\setbeamercolor{example text}{fg=DauphineGrey} % Texte exemple en gris foncé
+
+\setbeamercolor{item}{fg=DauphineBlue} % Couleur des puces
+\setbeamercolor{subitem}{fg=DauphineBlue}
+\setbeamercolor{subsubsection}{fg=DauphineBlue}
+
+\setbeamercolor{block title}{bg=DauphineBlue, fg=white} % Titre des blocs
+\setbeamercolor{block body}{bg=white, fg=DauphineGrey} % Corps des blocs (fond légèrement différent si besoin)
+\setbeamercolor{block title alerted}{bg=red!80!black, fg=white} % Blocs alertés (peut être ajusté)
+\setbeamercolor{block body alerted}{bg=white, fg=red!80!black}
+\setbeamercolor{block title example}{bg=green!60!black, fg=white} % Blocs exemples (peut être ajusté)
+\setbeamercolor{block body example}{bg=white, fg=green!60!black}
+
+% Polices Beamer
+\usefonttheme{professionalfonts} % Utilise les polices chargées (Helvetica ici)
+\setbeamerfont{title}{size=\LARGE, series=\bfseries}
+\setbeamerfont{subtitle}{size=\large}
+\setbeamerfont{author}{size=\normalsize}
+\setbeamerfont{institute}{size=\small}
+\setbeamerfont{date}{size=\small}
+\setbeamerfont{frametitle}{size=\large, series=\bfseries}
+\setbeamerfont{normal text}{family=\sffamily} % Utiliser la police sans-serif (Helvetica) partout
+\setbeamerfont{block title}{size=\normalsize, series=\bfseries}
+\setbeamerfont{footnote}{size=\tiny}
+
+% Thème extérieur (en-tête et pied de page)
+\setbeamertemplate{navigation symbols}{} % Supprime les symboles de navigation
+\setbeamertemplate{headline}{} % Pas d'en-tête pour un style épuré
+
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,left]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\hspace*{2ex}\insertshortauthor%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\insertshorttitle%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.2\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+      \usebeamerfont{date in head/foot}\insertframenumber{} / \inserttotalframenumber\hspace*{2ex}%
+       % --- LOGO INSIGNE DAUPHINE ---
+       % Remplacez 'logo_dauphine_insigne.png' par le chemin vers votre fichier logo (png ou PNG)
+       % Le logo est redimensionné pour avoir une hauteur de 1.5ex (environ la hauteur d'une lettre)
+       % La charte p.35 indique que l'insigne ne doit pas être seul sans le bloc marque sur le même support.
+       % Pour une présentation interne où le contexte est clair (titre slide), c'est souvent toléré.
+       \includegraphics[height=1.5ex]{logo_dauphine_insigne.png}%
+       \hspace*{1ex}%
+    \end{beamercolorbox}%
+  }%
+  \vskip0pt%
+}
+
+% Thème intérieur (éléments de contenu)
+\setbeamertemplate{itemize items}[triangle] % Puces triangulaires (ou square, ball)
+\setbeamertemplate{blocks}[rounded][shadow=false] % Blocs arrondis sans ombre
+\setbeamertemplate{bibliography item}{\insertbiblabel} % Style pour la bibliographie
+
+% Page de titre personnalisée
+\setbeamertemplate{title page}{%
+  \vbox{} % Espace en haut
+  \vfill % Centre verticalement
+  \begingroup
+    % --- LOGO PRINCIPAL DAUPHINE ---
+    % Remplacez 'logo_dauphine_psl.png' par le chemin vers votre fichier logo principal
+    \centering
+    \includegraphics[width=0.4\textwidth]{logo_dauphine_psl.png}\\[1cm] % Ajustez la taille si besoin
+    \begin{beamercolorbox}[sep=8pt,center]{title}
+      \usebeamerfont{title}\inserttitle\par%
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%
+    \end{beamercolorbox}%
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=8pt,center]{author}
+      \usebeamerfont{author}\insertauthor
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center]{institute}
+      \usebeamerfont{institute}\insertinstitute
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center]{date}
+      \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}%
+  \endgroup
+  \vfill % Espace en bas
+}
+
+% --- INFORMATIONS DE LA PRÉSENTATION ---
+\title{Titre de Votre Présentation}
+\subtitle{Sous-titre Éventuel}
+\author{Votre Nom \and Nom Collaborateur 1 \and Nom Collaborateur 2}
+\institute{Université Paris Dauphine - PSL \\ Votre laboratoire/département}
+\date{\today}
+
+% --- RACCOURCIS PERSONNALISÉS (Optionnel) ---
+% \newcommand{\cmd}[1]{\texttt{\textbackslash #1}} % Exemple de commande perso
+
+% --- DOCUMENT ---
+\begin{document}
+
+% --- SLIDE 1: Page de Titre ---
+{ % Groupe pour appliquer un fond différent si besoin, ou pas de pied de page
+  % \setbeamertemplate{footline}{} % Décommentez pour supprimer le pied de page sur la slide de titre
+  \frame{\titlepage}
+}
+
+% --- SLIDE 2: Table des Matières ---
+\begin{frame}{Plan de la présentation}
+  \tableofcontents % Génère la table des matières automatiquement
+\end{frame}
+
+% --- SECTION 1 ---
+\section{Introduction}
+
+% --- SLIDE 3: Texte simple avec puces ---
+\begin{frame}{Contexte et Motivation}
+  \begin{itemize}
+    \item Ceci est le premier point important.
+    \item Le deuxième point détaille un aspect crucial.
+      \begin{itemize}
+        \item Sous-point A
+        \item Sous-point B
+      \end{itemize}
+    \item Un troisième point pour conclure cette partie.
+  \end{itemize}
+  \vfill % Pousse le contenu vers le haut si peu de texte
+  Note de bas de page.\footnote{Référence ou commentaire additionnel.}
+\end{frame}
+
+% --- SLIDE 4: Texte avec blocs ---
+\begin{frame}{Concepts Clés}
+  \begin{block}{Définition Importante}
+    Contenu du bloc standard. Utile pour définir des termes ou des concepts.
+  \end{block}
+
+  \begin{alertblock}{Point d'Attention}
+    Contenu du bloc d'alerte. Pour souligner un point critique ou une mise en garde.
+  \end{alertblock}
+
+  \begin{exampleblock}{Exemple Illustratif}
+    Contenu du bloc d'exemple. Pour montrer une application concrète.
+  \end{exampleblock}
+\end{frame}
+
+% --- SECTION 2 ---
+\section{Méthodologie}
+
+% --- SLIDE 5: Colonnes ---
+\begin{frame}{Comparaison Approche A vs. Approche B}
+  \begin{columns}[T] % T = top align, c = center, b = bottom
+    \begin{column}{0.48\textwidth} % Largeur de la colonne 1
+      \centering \textbf{Approche A}
+      \begin{itemize}
+        \item Avantage 1
+        \item Avantage 2
+        \item Inconvénient 1
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth} % Largeur de la colonne 2
+      \centering \textbf{Approche B}
+      \begin{itemize}
+        \item Avantage 1
+        \item Inconvénient 1
+        \item Inconvénient 2
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% --- SLIDE 6: Image ---
+\begin{frame}{Illustration des Données}
+  \begin{figure}
+    \centering
+    % Vous pouvez utiliser le logo disponible ou remplacer par votre propre image
+    \includegraphics[width=0.7\textwidth]{logo_dauphine_psl.png}
+    \caption{Logo de l'Université Paris Dauphine-PSL.}
+    \label{fig:mon_image} % Label pour référence croisée
+  \end{figure}
+\end{frame}
+
+% --- SLIDE 7: Équations ---
+\begin{frame}{Modèle Mathématique}
+  L'équation principale de notre modèle est :
+  \begin{equation}
+    E = mc^2 \label{eq:einstein}
+  \end{equation}
+
+  Où :
+  \begin{itemize}
+    \item $E$ représente l'énergie
+    \item $m$ est la masse
+    \item $c$ est la vitesse de la lumière dans le vide
+  \end{itemize}
+
+  Nous faisons référence à l'équation \eqref{eq:einstein}.
+
+  Une autre équation importante :
+  $$ \sum_{i=1}^{n} x_i = x_1 + x_2 + \dots + x_n $$
+\end{frame}
+
+% --- SECTION 3 ---
+\section{Résultats}
+
+% --- SLIDE 8: Tableau ---
+\begin{frame}{Résultats Expérimentaux}
+  \begin{table}
+    \centering
+    \caption{Comparaison des performances.}
+    \label{tab:resultats}
+    \begin{tabular}{lccc}
+      \toprule % Ligne supérieure du tableau (package booktabs)
+      Méthode     & Précision (\%) & Rappel (\%) & Score F1 (\%) \\
+      \midrule % Ligne de séparation (package booktabs)
+      Baseline    & 75.2           & 70.1        & 72.5          \\
+      Notre Approche & \textbf{88.5}  & \textbf{85.3} & \textbf{86.9} \\
+      Approche C  & 80.1           & 82.0        & 81.0          \\
+      \bottomrule % Ligne inférieure du tableau (package booktabs)
+    \end{tabular}
+  \end{table}
+
+  Le tableau \ref{tab:resultats} montre que notre approche surpasse les méthodes existantes.
+\end{frame}
+
+% --- SLIDE 9: Section Slide (Optionnel) ---
+% Peut être utilisé pour marquer clairement une nouvelle section
+\section{Discussion}
+\begin{frame}
+    \centering
+    \usebeamerfont{frametitle}\insertsectionhead
+\end{frame}
+
+
+% --- SLIDE 10: Discussion Points ---
+\begin{frame}{Discussion des Résultats}
+    \begin{itemize}
+        \item Interprétation des résultats principaux.
+        \item Limitations de l'étude.
+        \item Comparaison avec les travaux existants.
+        \item Implications théoriques et pratiques.
+    \end{itemize}
+\end{frame}
+
+% --- SECTION 4 ---
+\section{Conclusion et Perspectives}
+
+% --- SLIDE 11: Conclusion ---
+\begin{frame}{Conclusion}
+  En résumé :
+  \begin{itemize}
+      \item Les contributions majeures de ce travail sont...
+      \item Nous avons démontré que...
+      \item Les résultats ouvrent la voie à...
+  \end{itemize}
+\end{frame}
+
+% --- SLIDE 12: Perspectives ---
+\begin{frame}{Perspectives}
+    Travaux futurs :
+    \begin{itemize}
+        \item Explorer l'extension du modèle à...
+        \item Valider l'approche sur des jeux de données plus larges.
+        \item Investiguer l'impact du paramètre X.
+    \end{itemize}
+\end{frame}
+
+% --- SLIDE 13: Bibliographie (Optionnel) ---
+% Décommentez si vous utilisez biblatex
+% \begin{frame}[allowframebreaks]{Références} % allowframebreaks si la biblio est longue
+%   \printbibliography
+% \end{frame}
+
+% --- SLIDE 14: Remerciements (Optionnel) ---
+\begin{frame}{Remerciements}
+    Nous tenons à remercier :
+    \begin{itemize}
+        \item Les organismes financeurs (ANR, ERC, etc.).
+        \item Les collègues pour les discussions fructueuses.
+        \item Les relecteurs anonymes.
+    \end{itemize}
+\end{frame}
+
+% --- SLIDE 15: Questions / Fin ---
+\begin{frame}
+  \vfill
+  \centering
+  {\Huge Questions ?}
+  \vfill
+  {\Large Merci de votre attention.}
+  \vfill
+  % Vous pouvez remettre le logo principal ici si vous le souhaitez
+  % \includegraphics[width=0.3\textwidth]{logo_dauphine_psl.png}\\[1cm]
+\end{frame}
+
+\end{document}
