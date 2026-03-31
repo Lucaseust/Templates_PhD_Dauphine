@@ -84,9 +84,11 @@ Entrée principale:
 
 - `Template Dauphine-PSL.tex`
 
-Visuel de la page de garde (élément principal):
+Exemples visuels:
 
-![Visuel présentation Dauphine](Dauphine%20Presentation%20Template/logo_dauphine_psl.png)
+| Exemple 1 | Exemple 2 |
+| --- | --- |
+| ![Exemple 1 présentation](Dauphine%20Presentation%20Template/exemple1.png) | ![Exemple 2 présentation](Dauphine%20Presentation%20Template/exemple2.png) |
 
 Compilation (depuis `Dauphine Presentation Template/`):
 
@@ -102,9 +104,9 @@ Entrée principale:
 
 - `Poster Template.tex`
 
-Visuel du poster (élément principal):
+Exemple visuel:
 
-![Visuel poster Dauphine Digital Days](Dauphine%20Poster%20Template/Dauphine%20Digital%20Days.png)
+![Exemple poster](Dauphine%20Poster%20Template/exemple%203.png)
 
 Compilation (depuis `Dauphine Poster Template/`):
 
