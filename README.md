@@ -55,7 +55,7 @@ Aperçus:
 
 | Couverture manuscrit | Aperçu chapitre |
 | --- | --- |
-| ![Aperçu couverture manuscrit](Dauphine Thesis Manuscript Template/assets/preview/manuscript-cover.png) | ![Aperçu chapitre standalone](Dauphine Thesis Manuscript Template/assets/preview/chapter-preview.png) |
+| ![Aperçu couverture manuscrit](Dauphine%20Thesis%20Manuscript%20Template/assets/preview/manuscript-cover.png) | ![Aperçu chapitre standalone](Dauphine%20Thesis%20Manuscript%20Template/assets/preview/chapter-preview.png) |
 
 Compilation (depuis `Dauphine Thesis Manuscript Template/`):
 
@@ -86,7 +86,7 @@ Entrée principale:
 
 Visuel de la page de garde (élément principal):
 
-![Visuel présentation Dauphine](Dauphine Presentation Template/logo_dauphine_psl.png)
+![Visuel présentation Dauphine](Dauphine%20Presentation%20Template/logo_dauphine_psl.png)
 
 Compilation (depuis `Dauphine Presentation Template/`):
 
@@ -104,7 +104,7 @@ Entrée principale:
 
 Visuel du poster (élément principal):
 
-![Visuel poster Dauphine Digital Days](Dauphine Poster Template/Dauphine Digital Days.png)
+![Visuel poster Dauphine Digital Days](Dauphine%20Poster%20Template/Dauphine%20Digital%20Days.png)
 
 Compilation (depuis `Dauphine Poster Template/`):
 
