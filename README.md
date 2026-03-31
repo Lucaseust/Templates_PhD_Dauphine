@@ -1,14 +1,14 @@
 # Templates_PhD_Dauphine
 
-Collection de templates LaTeX pour Université Paris Dauphine - PSL.
+Collection of LaTeX templates for Université Paris Dauphine - PSL.
 
-Le dépôt contient trois templates distincts:
+This repository contains three distinct templates:
 
-- un template de manuscrit de thèse
-- un template de présentation Beamer
-- un template de poster
+- a thesis manuscript template
+- a Beamer presentation template
+- a poster template
 
-## Structure du dépôt
+## Repository structure
 
 ```text
 Templates_PhD_Dauphine/
@@ -42,79 +42,79 @@ Templates_PhD_Dauphine/
     `-- Poster Template.tex
 ```
 
-## Utilisation du Thesis Manuscript Template
+## Using the Thesis Manuscript Template
 
-Dossier: `Dauphine Thesis Manuscript Template/`
+Folder: `Dauphine Thesis Manuscript Template/`
 
-Entrées principales:
+Main entry points:
 
-- `main.tex` pour le manuscrit complet
-- `chapter-ch1.tex` à `chapter-ch4.tex` pour compiler un chapitre seul
+- `main.tex` for the full manuscript
+- `chapter-ch1.tex` to `chapter-ch4.tex` to compile individual chapters
 
-Aperçus:
+Previews:
 
-| Couverture manuscrit | Aperçu chapitre |
+| Manuscript cover | Chapter preview |
 | --- | --- |
-| ![Aperçu couverture manuscrit](Dauphine%20Thesis%20Manuscript%20Template/assets/preview/manuscript-cover.png) | ![Aperçu chapitre standalone](Dauphine%20Thesis%20Manuscript%20Template/assets/preview/chapter-preview.png) |
+| ![Manuscript cover preview](Dauphine%20Thesis%20Manuscript%20Template/assets/preview/manuscript-cover.png) | ![Standalone chapter preview](Dauphine%20Thesis%20Manuscript%20Template/assets/preview/chapter-preview.png) |
 
-Compilation (depuis `Dauphine Thesis Manuscript Template/`):
+Build command (from `Dauphine Thesis Manuscript Template/`):
 
 ```text
 latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -outdir=build main.tex
 ```
 
-Compilation d'un chapitre:
+Build a single chapter:
 
 ```text
 latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -outdir=build chapter-ch2.tex
 ```
 
-Fichiers à personnaliser en priorité:
+Files to customize first:
 
 1. `config/cover-metadata.tex`
 2. `frontmatter/`
 3. `ch1/` à `ch4/`
 4. `bibliography/references.bib`
 
-## Utilisation du Presentation Template
+## Using the Presentation Template
 
-Dossier: `Dauphine Presentation Template/`
+Folder: `Dauphine Presentation Template/`
 
-Entrée principale:
+Main entry point:
 
 - `Template Dauphine-PSL.tex`
 
-Exemples visuels:
+Visual examples:
 
-| Exemple 1 | Exemple 2 |
+| Example 1 | Example 2 |
 | --- | --- |
-| ![Exemple 1 présentation](Dauphine%20Presentation%20Template/exemple1.png) | ![Exemple 2 présentation](Dauphine%20Presentation%20Template/exemple2.png) |
+| ![Presentation example 1](Dauphine%20Presentation%20Template/exemple1.png) | ![Presentation example 2](Dauphine%20Presentation%20Template/exemple2.png) |
 
-Compilation (depuis `Dauphine Presentation Template/`):
+Build command (from `Dauphine Presentation Template/`):
 
 ```text
 latexmk -pdf -interaction=nonstopmode -file-line-error "Template Dauphine-PSL.tex"
 ```
 
-## Utilisation du Poster Template
+## Using the Poster Template
 
-Dossier: `Dauphine Poster Template/`
+Folder: `Dauphine Poster Template/`
 
-Entrée principale:
+Main entry point:
 
 - `Poster Template.tex`
 
-Exemple visuel:
+Visual example:
 
-![Exemple poster](Dauphine%20Poster%20Template/exemple%203.png)
+![Poster example](Dauphine%20Poster%20Template/exemple%203.png)
 
-Compilation (depuis `Dauphine Poster Template/`):
+Build command (from `Dauphine Poster Template/`):
 
 ```text
 latexmk -pdf -interaction=nonstopmode -file-line-error "Poster Template.tex"
 ```
 
-## Vérification de l'environnement (Windows)
+## Environment check (Windows)
 
 ```text
 where latexmk
@@ -124,22 +124,22 @@ where biber
 
 ## Overleaf
 
-Workflow recommandé:
+Recommended workflow:
 
-1. Créer un projet Overleaf vide.
-2. Upload uniquement le dossier du template choisi.
-3. Définir le bon document principal.
+1. Create an empty Overleaf project.
+2. Upload only the folder of the chosen template.
+3. Set the correct main document.
 
-Documents principaux:
+Main documents:
 
-- manuscrit: `main.tex`
-- présentation: `Template Dauphine-PSL.tex`
+- manuscript: `main.tex`
+- presentation: `Template Dauphine-PSL.tex`
 - poster: `Poster Template.tex`
 
-## Documentation et attribution
+## Documentation and attribution
 
-- Guide complet: `GUIDE.md`
-- Attribution manuscrit: `Dauphine Thesis Manuscript Template/ATTRIBUTION.md`
-- Licence manuscrit: `Dauphine Thesis Manuscript Template/LICENSE`
+- Full guide: `GUIDE.md`
+- Manuscript attribution: `Dauphine Thesis Manuscript Template/ATTRIBUTION.md`
+- Manuscript license: `Dauphine Thesis Manuscript Template/LICENSE`
 
-Le template manuscrit inclut une version modifiée du package de couverture PSL de Pierre Guillou. Le copyright et la licence restent indiqués dans `Dauphine Thesis Manuscript Template/psl-cover.sty`.
+The manuscript template includes a modified version of Pierre Guillou's PSL cover package. Copyright and license information remain in `Dauphine Thesis Manuscript Template/psl-cover.sty`.
