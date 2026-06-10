@@ -7,7 +7,6 @@ This template includes a modified copy of the PSL thesis cover package and relat
 - `psl-cover.sty`
 - `assets/cover/front-bg.jpg`
 - `assets/cover/back-bg.png`
-- `assets/cover/logo-institute.jpg`
 - `assets/cover/logo-institute.png`
 
 ## Original author
@@ -22,4 +21,5 @@ This template includes a modified copy of the PSL thesis cover package and relat
 
 - The original copyright and license notice remains inside `psl-cover.sty`.
 - This template uses a locally adapted version of the cover package for a reusable manuscript skeleton.
+- The tracked institute logo was refreshed for the current Paris Dauphine - PSL visual identity.
 - If you redistribute this template, keep the attribution and preserve a GPL-compatible distribution path for the modified cover package.

@@ -67,6 +67,8 @@ Main entry points:
 - `main.tex` (full manuscript)
 - `chapter-ch1.tex` to `chapter-ch4.tex` (standalone chapter builds)
 
+The manuscript template includes the refreshed Paris Dauphine - PSL cover assets.
+
 ### What to edit first
 
 1. `Dauphine Thesis Manuscript Template/config/cover-metadata.tex`

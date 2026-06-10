@@ -51,6 +51,8 @@ Main entry points:
 - `main.tex` for the full manuscript
 - `chapter-ch1.tex` to `chapter-ch4.tex` to compile individual chapters
 
+The manuscript template uses the refreshed Paris Dauphine - PSL cover assets.
+
 Previews:
 
 | Manuscript cover | Chapter preview |
