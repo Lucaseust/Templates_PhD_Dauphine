@@ -68,6 +68,29 @@
   \renewcommand{\tablename}{Table}
 }
 
+%%%% Chapter styling
+\makeatletter
+\def\@makechapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright \normalfont\color{myblue}%
+    \ifnum \c@secnumdepth >\m@ne
+      \huge\bfseries \@chapapp\space \thechapter
+      \par\nobreak
+      \vskip 20\p@
+    \fi
+    \interlinepenalty\@M
+    \Huge\bfseries #1\par\nobreak
+    \vskip 40\p@
+  }}
+\def\@makeschapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright \normalfont\color{myblue}%
+    \interlinepenalty\@M
+    \Huge\bfseries #1\par\nobreak
+    \vskip 40\p@
+  }}
+\makeatother
+
 %%%% Bibliography
 \usepackage[
   backend=biber,
@@ -80,7 +103,7 @@
 
 %%%% Chapter helpers
 \newcommand{\chapterabstract}[1]{%
-  \begin{tcolorbox}[colback=gray!5,colframe=black,title=Chapter Overview]
+  \begin{tcolorbox}[colback=gray!5,colframe=myblue,colbacktitle=myblue,coltitle=white,title=Chapter Overview]
   #1
   \end{tcolorbox}
 }
